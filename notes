@@ -1,0 +1,53 @@
+References
+
+Faucet: https://faucet.ropsten.be/
+MetaMask: https://metamask.io/
+Etherscan: https://ropsten.etherscan.io/
+
+
+We'll learn how to
+
++ Authenticate a user
++ Vaidate that a user owns a given wallet (like for Joining some NFT discords)
++ Sended a signed message
++ send eth over the blockchain to another wallet
+
+Auth/Connecting a wallet
+
+All of this can be validated anywhere - like on a server - with only publically availabe info (Public Key/Wallet Address & Signature)
+
++ 1st check to see if a user has the crytpto currency wallet installed
++ Next check to see if we have the user's permission to access the wallet
+  - This will trigger a ui event in the wallet on the user's side
+  - Unless of course the user has already granted permission in which case ther
+  is no need for the wallet to ask as this url has been whitelisted
++ Now it is the 1st time we are going to use our library ethers that will handle all
+of our interactions with the blockchain
+   - Show Ethers - say what it can do
+    => Query the Blockchain
+    => Write to the Blockchain
+    => Interact with Contracts (call methods of on chain programs)
+    => Listen to current Events on chain (e.g call a handler method when any transfer occours)
+    => Query historical events
+    => Sign messages
+
++ 1st of we need to get a 'provider'
+  - This is the object that meta mask exposes to the browser at the window.ethereum address we saw before. However in this case it is also wrapped by Ethers which is how the library provides all of its own functionality.
++ Next we get what is called the signer by calling the getSigner method of the provider
+  - in a way what we're doing here is getting the user/signing ability from the wallet. We're going to use this to sign our message
+  - its important to note the wallet never surrenders the private key - it only accepts the message we want sign and then internally uses the private key to sign it.
+  - thru the magick of private/public key cryptography without ever knowing the private key we can verify that:
+    => A user with the private key corresponding to the public key signed the message - I can't tell what the private key is - I can't work backwards to it from the public key (very very hard) but I CAN (very easily) know that a user with THIS and only THIS public key DID sign with their private key. This uni-directionality is why its called asymetric cryptography. This is actually a much broader topic than just crypto.
+    => I can also tell that they signed this specific message - that it has not been changed even by a single character.
+    => And we can do all of this with the message, the signature & the public key of the signer - nothing else is needed. Except for Math.
++ Next we need to ask the signer to actually sign the message
+  - wallet internally accepts the message we have passed here
+  - wallet signs the message with the private key
+  - wallet returns only the signature which is a hashed version of the message that has been transformed by the private key in such a way that anyone with the public key can verify the message that was passed in and that the person with the public key (show wallet here) signed it
++ In fact lets just get the signer public key / address b/c we need this later in our example when we validate the message
++ Then we just return the message, signature, and address to our simple react app
++ Lets see how it works
+  - Here we
+  - mm asks us to sign the message
+  - you are not interacting with the blockchain no gas fees - just a cryptographic operation
+  -
