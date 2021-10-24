@@ -3,7 +3,7 @@ import { ethers } from "ethers";
 import ErrorMessage from "./ErrorMessage";
 import SuccessMessage from "./SuccessMessage";
 
-const verifyMessage = async ({ message, address, signature }) => {
+const verify = async ({ message, address, signature }) => {
   try {
     const signerAddr = await ethers.utils.verifyMessage(message, signature);
     if (signerAddr !== address) {
@@ -26,7 +26,7 @@ export default function VerifyMessage() {
     const data = new FormData(e.target);
     setSuccessMsg();
     setError();
-    const isValid = await verifyMessage({
+    const isValid = await verify({
       setError,
       message: data.get("message"),
       address: data.get("address"),

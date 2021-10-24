@@ -11,14 +11,18 @@ const pay = async ({ setError, setTxs, amount, to }) => {
     await window.ethereum.send("eth_requestAccounts");
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
+
+    // make sure this is a valid address - will throw if not
     ethers.utils.getAddress(to);
+
     const value = ethers.utils.parseEther(amount); //convert to wei
     const tx = await signer.sendTransaction({
       to,
       value
     });
-    console.log({ value, to });
+    console.log("tx args: ", { value, to });
     console.log("tx", tx);
+
     setTxs([tx]);
   } catch (err) {
     setError(err.message);

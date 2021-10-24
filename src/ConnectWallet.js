@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { ethers } from "ethers";
 import ErrorMessage from "./ErrorMessage";
 
-const connectWallet = async ({ setError }) => {
+const connect = async ({ setError }) => {
   console.log("connectWallet()...");
   try {
     if (!window.ethereum)
@@ -38,7 +38,7 @@ export default function ConnectWallet() {
   const handleConnect = async (e) => {
     e.preventDefault();
     setError(); // clear error display
-    const connection = await connectWallet({
+    const connection = await connect({
       setError
     });
     setSelectedAddress(connection?.selectedAddress || "");

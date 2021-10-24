@@ -6,19 +6,12 @@ const signMessage = async ({ setError, message }) => {
   try {
     console.log({ message });
 
-    // make sure we have a user with an ethereum compatible wallet like metamask installed in their browser
     if (!window.ethereum)
       throw new Error("No crypto wallet found. Please install it.");
 
-    // ask permission to access the wallet now that we're sure that they have one
     await window.ethereum.send("eth_requestAccounts");
 
-    // use ethers to communicate with the blockchain
-
-    // get the provider
     const provider = new ethers.providers.Web3Provider(window.ethereum);
-
-    // from the provider get the signer
     const signer = provider.getSigner();
     const signature = await signer.signMessage(message);
     const address = await signer.getAddress();
