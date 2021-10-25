@@ -14,6 +14,10 @@ We'll learn how to
 
 Auth/Connecting a wallet
 
+We're going to demo this using a really simple react app, the metamask wallet installed via a chrome extension, and ethers js which we will use to interact with Ethereum.
+
+However its worth noting that we are not even going to do a blockchain operation until the end of the demo when we actually send some $Eth on chain. Up until that point everything is achieved with Metamask and simple cryptographic operations.
+
 All of this can be validated anywhere - like on a server - with only publically availabe info (Public Key/Wallet Address & Signature)
 
 + 1st check to see if a user has the crytpto currency wallet installed
