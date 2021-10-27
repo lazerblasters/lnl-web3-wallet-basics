@@ -1,9 +1,4 @@
-References
-
-Faucet: https://faucet.ropsten.be/
-MetaMask: https://metamask.io/
-Etherscan: https://ropsten.etherscan.io/
-
+{{Switch over to the google slides screen}}
 
 We'll learn how to
 
@@ -12,7 +7,53 @@ We'll learn how to
 + Sended a signed message
 + send eth over the blockchain to another wallet
 
-Auth/Connecting a wallet
+Here are the tools involved in this:
+
+React: https://reactjs.org/
+MetaMask: https://metamask.io/
+Ethers: https://docs.ethers.io/v5/ //
+Web3: https://web3js.readthedocs.io/en/v1.5.2/ // older alternative to ethers - more popular currently
+Etherscan: https://ropsten.etherscan.io/
+Faucet: https://faucet.ropsten.be/
+Eth Converter: https://eth-converter.com/ // Just for converting units
+
++ React/JS
++ MetaMask wallet
+  - knows how to
+    => Query the Blockchain
+    => Write to the Blockchain
+    => Interact with Contracts (call methods of on chain programs)
+    => Listen to current Events on chain (e.g call a handler method when any transfer occours)
+    => Query historical events
+    => Sign messages
+    => keeps the users private key secret and manages access to the public key and other info like account balances
+    => a pretty good UI for the user to inteact with like a bank account, confirm tx, authorize info access and so on
++ Etherscan so we can search tx on the chain and make sure that we have built worked
++ Ethers JS (a newer alternative to the web3js library you may have heard of)
++ Faucet so we can add fake internet money to our account
++ Ethereum and test networks (specifically Rostpen test network)
+
+{{Switch over to the code screen}}
+
+Metamask is going to do a lot of the heavy lifting for us to day. Given that it is installed we are going to be able to do all of our tasks with really only a few lines of JS code.
+
+An important job that metamask performs is publishing an object onto the window called 'ethereum'. All of the Crypto operations go through this object. Libraries like Web3js or Ethers (which we will use today) wrap this 'ethereum' object and enrich its functionality with their own logic. The wrapped ethereum object is called a web3 `Provider` and you can think of it as your gateway to the blockchain.
+
+To understand what is unusual about web3 from a ui pov is that we're going to get all of this done without any central server - most of this is actually done between our JS and Metamasj - both of which are on the client. When we do an actual tx it goes our to the Blockchain which is an external server/db but it if course is a distributed one.
+
+Ok lets dive into some code and get started with Auth/Connecting a wallet
+
+//////////////////
+
+1. show them the ui & explain each input - if it makes sense show them metamask
+2. show them the code - show the jsx, handler, & hero method with console.log
+3. walk through each line with explanation
+4. show the working version and step thru some examples
+
+///////////////////
+
+
+
 
 We're going to demo this using a really simple react app, the metamask wallet installed via a chrome extension, and ethers js which we will use to interact with Ethereum.
 
@@ -27,14 +68,6 @@ All of this can be validated anywhere - like on a server - with only publically 
   is no need for the wallet to ask as this url has been whitelisted
 + Now it is the 1st time we are going to use our library ethers that will handle all
 of our interactions with the blockchain
-   - Show Ethers - say what it can do
-    => Query the Blockchain
-    => Write to the Blockchain
-    => Interact with Contracts (call methods of on chain programs)
-    => Listen to current Events on chain (e.g call a handler method when any transfer occours)
-    => Query historical events
-    => Sign messages
-
 + 1st of we need to get a 'provider'
   - This is the object that meta mask exposes to the browser at the window.ethereum address we saw before. However in this case it is also wrapped by Ethers which is how the library provides all of its own functionality.
 + Next we get what is called the signer by calling the getSigner method of the provider
