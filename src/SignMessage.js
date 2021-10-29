@@ -16,7 +16,7 @@ const signMessage = async ({ setError, message }) => {
     const signature = await signer.signMessage(message);
     const address = await signer.getAddress();
 
-    const balance = await provider.getBalance(selectedAddress);
+    const balance = await provider.getBalance(address);
     const balanceEth = ethers.utils.formatEther(balance);
 
     console.log("balance: ", balance);
