@@ -9,7 +9,7 @@ There are 3 simple forms. Each is its own self contained component. Nothin fancy
 2. Validate Signed Message: Demonstrates how given the message & the signature the Ethereum address / Public Key can be derived which serves as a verification that the given user has control of the given wallet. This would typically take place on a server.
 3. Pay: Send Ether to another Ethereum address.
 
-Probably the best thing is to checkout the video of the lnl for a walk through.
+Probably the best thing is to checkout the [video](https://drive.google.com/file/d/1vVLFHErF6RhK1GaYaQgQ1FvsPDHJPf-z/view) of the lnl for a walk through.
 
 ## Dependencies & Useful Links
 
