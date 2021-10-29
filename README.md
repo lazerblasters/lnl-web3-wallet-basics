@@ -2,7 +2,7 @@
 
 ## Description
 
-This project is a super simple demo of how to sign/validate messages & send Ether by leveraging an installed crypto wallet browser extension. Originally it was used for a lnl demo but you can also refernce it for an example of how to get a gateway to Ethereum set up and run operations over it.
+This project is a super simple demo of how to sign/validate messages & send Ether by leveraging an installed crypto wallet browser extension. Originally it was used for a lnl demo but you can also refer to it for an example of how to get a gateway to Ethereum set up and run operations over it.
 
 There are 3 simple forms. Each is its own self contained component. Nothin fancy.
 1. SignMessage: Triggers giving user permission to access the wallet and then accepts a message and asks the wallet to sign it. This will trigger a UI where the user will be asked to sign the message.
