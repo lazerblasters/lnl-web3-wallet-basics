@@ -9,6 +9,8 @@ There are 3 simple forms. Each is its own self contained component. Nothin fancy
 2. Validate Signed Message: Demonstrates how given the message & the signature the Ethereum address / Public Key can be derived which serves as a verification that the given user has control of the given wallet. This would typically take place on a server.
 3. Pay: Send Ether to another Ethereum address.
 
+Probably the best thing is to checkout the video of the lnl for a walk through.
+
 ## Dependencies & Useful Links
 
 - React: [https://reactjs.org/](https://reactjs.org/)
@@ -18,17 +20,22 @@ There are 3 simple forms. Each is its own self contained component. Nothin fancy
 - Faucet: [https://faucet.ropsten.be/](https://faucet.ropsten.be/)
 - Eth Converter: [https://eth-converter.com/](https://faucet.ropsten.be/)
 
-- React/JS
-- MetaMask wallet
-  - knows how to
-    => Query the Blockchain
-    => Write to the Blockchain
-    => Interact with Contracts (call methods of on chain programs)
-    => Listen to current Events on chain (e.g call a handler method when any transfer occours)
-    => Query historical events
-    => Sign messages
-    => keeps the users private key secret and manages access to the public key and other info like account balances
-    => a pretty good UI for the user to inteact with like a bank account, confirm tx, authorize info access and so on
+
+### About MetaMask wallet
+Metamask knows how to do quite a lot:
+- Query the Blockchain
+- Write to the Blockchain
+- Interact with Contracts (call methods of on chain programs)
+- Listen to current Events on chain (e.g call a handler method when any transfer occours)
+- Query historical events
+- Sign messages
+- keeps the users private key secret and manages access to the public key and other info like account balances
+- provide a UI for the user to inteact with like a bank account, confirm tx, authorize info access and so on
+
+### About Ethers
+Ethers is similar to the well know Web3.js library. Think about it as your gateway to Ethereum. What it actually does is wrap an object that the wallet exposes on the browser `window` object at `window.ethereum`.
+
+### About the rest
 - Etherscan so we can search tx on the chain and make sure that we have built worked
 - Ethers JS (a newer alternative to the web3js library you may have heard of)
 - Faucet so we can add fake internet money to our account
